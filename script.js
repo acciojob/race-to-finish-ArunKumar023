@@ -1,10 +1,17 @@
 const promises = [
-  new Promise(resolve => setTimeout(() => resolve(1), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(2), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(3), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(4), Math.floor(Math.random() * 5000) + 1000)),
-  new Promise(resolve => setTimeout(() => resolve(5), Math.floor(Math.random() * 5000) + 1000))
+  new Promise(resolve => setTimeout(() => resolve(Math.random() * 4 + 1), Math.random() * 4000)),
+  new Promise(resolve => setTimeout(() => resolve(Math.random() * 4 + 1), Math.random() * 4000)),
+  new Promise(resolve => setTimeout(() => resolve(Math.random() * 4 + 1), Math.random() * 4000)),
+  new Promise(resolve => setTimeout(() => resolve(Math.random() * 4 + 1), Math.random() * 4000)),
+  new Promise(resolve => setTimeout(() => resolve(Math.random() * 4 + 1), Math.random() * 4000))
 ];
+
+Promise.any(promises)
+  .then(result => {
+    const output = document.getElementById("output");
+    output.textContent = `The first promise to resolve returned ${result.toFixed(2)} seconds.`;
+  });
+
 
 Promise.any(promises)
   .then(result => {
