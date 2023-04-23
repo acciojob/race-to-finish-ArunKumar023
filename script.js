@@ -1,16 +1,31 @@
-const promises = [
-  new Promise(resolve => setTimeout(() => resolve(Math.random() * 5 + 1), Math.random() * 5000)),
-  new Promise(resolve => setTimeout(() => resolve(Math.random() * 5 + 1), Math.random() * 5000)),
-  new Promise(resolve => setTimeout(() => resolve(Math.random() * 5 + 1), Math.random() * 5000)),
-  new Promise(resolve => setTimeout(() => resolve(Math.random() * 5 + 1), Math.random() * 5000)),
-  new Promise(resolve => setTimeout(() => resolve(Math.random() * 5 + 1), Math.random() * 5000))
-];
+ window.promise=[
+	 new Promise((resolve, reject)=>{
+		 setTimeout(()=>{
+			 resolve("Promise 1")
+		 },1000)
+	 }),
+	 new Promise((resolve, reject)=>{
+		 setTimeout(()=>{
+			 resolve("Promise 2")
+		 },2000)
+	 }),
+	 new Promise((resolve, reject)=>{
+		 setTimeout(()=>{
+			 resolve("Promise 3")
+		 },3000)
+	 }),
+	 new Promise((resolve, reject)=>{
+		 setTimeout(()=>{
+			 resolve("Promise 4")
+		 },4000)
+	 }),
+	 new Promise((resolve, reject)=>{
+		 setTimeout(()=>{
+			 resolve("Promise 5")
+		 },5000)
+	 }),
+ ]
 
-Promise.any(promises)
-  .then(result => {
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = `The first promise to resolve with result ${result}`;
-  })
-  .catch(error => {
-    console.log(error);
-  });
+Promise.any(promises).then((result)=>{
+	document.getElementById("output").innerHTML=result;
+});
